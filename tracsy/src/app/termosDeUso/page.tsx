@@ -2,7 +2,7 @@
 
 function TermosDeUsoPage() {
     return (
-        <div>
+        <div className="flex flex-col">
             <h1>Termos de uso</h1>
         </div>
     );
