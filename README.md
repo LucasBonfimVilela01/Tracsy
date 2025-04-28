@@ -5,4 +5,4 @@
 
 - Lucas Bonfim [@LucasBonfimVilela01](https://github.com/LucasBonfimVilela01)
 - Nino Sinelli [@nino-clmity](https://github.com/nino-clmity)
-- Beatriz Silva [@Jonatasfrinhai]([https://github.com/Jonatasfrinhai](https://github.com/Beatriz02020)
+- Beatriz Silva [@Beatriz02020](https://github.com/Beatriz02020)
