@@ -1,9 +1,10 @@
+import { PageTitle } from "@/components/ui/pageTitle";
 
 
 function CadastroPage() {
     return (
         <div>
-            <h1>Cadastro</h1>
+            <PageTitle title="Cadastro"/>
         </div>
     );
 }

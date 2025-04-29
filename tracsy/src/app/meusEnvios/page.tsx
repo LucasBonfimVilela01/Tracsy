@@ -1,9 +1,10 @@
+import { PageTitle } from "@/components/ui/pageTitle";
 
 
 function MeusEnviosPage() {
     return (
         <div>
-            <h1>Meus envios</h1>
+            <PageTitle title="Meus envios"/>
         </div>
     );
 }

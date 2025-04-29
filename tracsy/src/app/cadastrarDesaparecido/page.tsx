@@ -1,9 +1,10 @@
+import { PageTitle } from "@/components/ui/pageTitle";
 
 
 function CadastrarDesaparecidoPage() {
     return (
         <div>
-            <h1>Cadastrar desaparecido</h1>
+            <PageTitle title="Desaparecer desaparecido"/>
         </div>
     );
 }

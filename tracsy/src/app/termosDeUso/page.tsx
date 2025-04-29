@@ -1,9 +1,10 @@
+import { PageTitle } from "@/components/ui/pageTitle";
 
 
 function TermosDeUsoPage() {
     return (
         <div className="flex flex-col">
-            <h1>Termos de uso</h1>
+            <PageTitle title="Termos de uso"/>
         </div>
     );
 }

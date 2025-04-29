@@ -1,9 +1,10 @@
+import { PageTitle } from "@/components/ui/pageTitle";
 
 
 export default function Home() {
   return (
     <div>
-      <h1>Home</h1>
+      <PageTitle title="Feed"/>
     </div>
   );
 }

@@ -1,9 +1,10 @@
+import { PageTitle } from "@/components/ui/pageTitle";
 
 
 function LoginPage() {
     return (
         <div>
-            <h1>Login</h1>
+            <PageTitle title="Login"/>
         </div>
     );
 }

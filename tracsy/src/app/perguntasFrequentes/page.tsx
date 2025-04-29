@@ -1,17 +1,10 @@
 import { AccordionDinamico } from "@/components/elements/accordionDinamico";
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "@/components/ui/accordion"
+import { PageTitle } from "@/components/ui/pageTitle";
 
 function PerguntasFrequentesPage() {
     return (
         <div className="w-[40%]">
-            <div className="text-center p-5 font-bold text-[25px]">
-                <h1>Perguntas Frequentes</h1>
-            </div>
+            <PageTitle title="Perguntas frequentes"/>
             <div className="w-full">
                 <AccordionDinamico
                     dados={[

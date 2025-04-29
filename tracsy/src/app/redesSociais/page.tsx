@@ -1,9 +1,10 @@
+import { PageTitle } from "@/components/ui/pageTitle";
 
 
 function RedesSociaisPage() {
     return (
         <div>
-            <h1>Redes Sociais</h1>
+            <PageTitle title="Redes sociais"/>
         </div>
     );
 }
