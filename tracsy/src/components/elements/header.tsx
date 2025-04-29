@@ -2,17 +2,24 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 function Header() {
-    return (
-        <div className="bg-blue-200 p-3 flex justify-between">
-      <div className="flex items-center h-full">
-        <a href="/"><img
-          src="/logo-no-background.svg"
-          alt="Logo"
-          className="h-8 w-auto fill-black"/>
+  return (
+    // Container principal
+    <div className="bg-blue-200 p-3 flex flex-col items-center gap-4 sm:flex-row sm:justify-between sm:items-center">
+
+      {/* Logo*/}
+      <div>
+        <a href="/">
+          <img
+            src="/logo-no-background.svg"
+            alt="Logo"
+            className="h-8 w-auto fill-black"
+          />
         </a>
       </div>
+
+      {/* Links */}
       <div className="flex">
-        <div className="flex">
+        <div className="flex flex-wrap justify-center items-center">
           <Button asChild variant="link">
             <Link href="/cadastrarDesaparecido">Cadastrar desaparecido</Link>
           </Button>
@@ -28,7 +35,7 @@ function Header() {
         </div>
       </div>
     </div>
-    )
+  );
 }
 
-export { Header }
+export { Header };
