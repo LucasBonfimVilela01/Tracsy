@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 
 function Header() {
@@ -26,10 +25,6 @@ function Header() {
           <Button asChild variant="link" className="p-0 pr-4">
             <Link href="/cadastro">Cadastro</Link>
           </Button>
-          <Avatar>
-            <AvatarImage src="https://png.pngtree.com/png-vector/20190329/ourmid/pngtree-vector-avatar-icon-png-image_889567.jpg" />
-            <AvatarFallback>Foto</AvatarFallback>
-          </Avatar>
         </div>
       </div>
     </div>
