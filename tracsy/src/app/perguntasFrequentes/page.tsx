@@ -20,15 +20,21 @@ function PerguntasFrequentesPage() {
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-2">
-                        <AccordionTrigger>Pergunta2?</AccordionTrigger>
+                        <AccordionTrigger>Como posso contatar sobre algum desaparecido?</AccordionTrigger>
                         <AccordionContent>
-                            resposta 2
+                            No feed na página inicial você deve apertar o botão "Método de contato"
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-3">
-                        <AccordionTrigger>Pergunta3?</AccordionTrigger>
+                        <AccordionTrigger>Não sei um local exato onde eu avistei, onde devo marcar no mapa?</AccordionTrigger>
                         <AccordionContent>
-                            resposta 3
+                            Você deve marcar na região geral onde você pensa ter visto aquela pessoa, e se precisar especifique isso na descrição.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-4">
+                        <AccordionTrigger>Posso deletar algum cadastro que eu fiz?</AccordionTrigger>
+                        <AccordionContent>
+                            Sim, você pode! Você deve ir na página de "Meus envios" e clicar em deletar.
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
