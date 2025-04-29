@@ -1,3 +1,4 @@
+import { AccordionDinamico } from "@/components/elements/accordionDinamico";
 import {
     Accordion,
     AccordionContent,
@@ -12,32 +13,15 @@ function PerguntasFrequentesPage() {
                 <h1>Perguntas Frequentes</h1>
             </div>
             <div className="w-full">
-                <Accordion type="single" collapsible className="w-full">
-                    <AccordionItem value="item-1">
-                        <AccordionTrigger>Como cadastro um desaparecido?</AccordionTrigger>
-                        <AccordionContent>
-                            Você deve fazer login e clicar em cadastrar desaparecido no nosso header.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-2">
-                        <AccordionTrigger>Como posso contatar sobre algum desaparecido?</AccordionTrigger>
-                        <AccordionContent>
-                            No feed na página inicial você deve apertar o botão "Método de contato"
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-3">
-                        <AccordionTrigger>Não sei um local exato onde eu avistei, onde devo marcar no mapa?</AccordionTrigger>
-                        <AccordionContent>
-                            Você deve marcar na região geral onde você pensa ter visto aquela pessoa, e se precisar especifique isso na descrição.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-4">
-                        <AccordionTrigger>Posso deletar algum cadastro que eu fiz?</AccordionTrigger>
-                        <AccordionContent>
-                            Sim, você pode! Você deve ir na página de "Meus envios" e clicar em deletar.
-                        </AccordionContent>
-                    </AccordionItem>
-                </Accordion>
+                <AccordionDinamico
+                    dados={[
+                        { trigger: "Como cadastro um desaparecido?", content: "Você deve fazer login e clicar em cadastrar desaparecido no nosso header." },
+                        { trigger: "Como posso contatar sobre algum desaparecido?", content: "No feed na página inicial você deve apertar o botão \"Método de contato\"" },
+                        { trigger: "Não sei um local exato onde eu avistei, onde devo marcar no mapa?", content: "Você deve marcar na região geral onde você pensa ter visto aquela pessoa, e se precisar especifique isso na descrição." },
+                        { trigger: "Posso deletar algum cadastro que eu fiz?", content: "Sim, você pode! Você deve ir na página de \"Meus envios\" e clicar em deletar." },
+                        { trigger: "Posso editar algum cadastro que eu fiz?", content: "Sim, você pode! Você deve ir na página de \"Meus envios\" e clicar em editar." }
+                    ]}
+                />
             </div>
         </div>
     );
