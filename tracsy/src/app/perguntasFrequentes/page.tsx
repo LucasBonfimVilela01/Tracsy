@@ -4,7 +4,7 @@ import { PageTitle } from "@/components/ui/pageTitle";
 function PerguntasFrequentesPage() {
     return (
         <div className="w-[40%]">
-            <PageTitle title="Perguntas frequentes"/>
+            <PageTitle title="Perguntas frequentes" />
             <div className="w-full">
                 <AccordionDinamico
                     dados={[
