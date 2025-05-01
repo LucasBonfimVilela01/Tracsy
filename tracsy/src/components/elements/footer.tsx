@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function Footer() {
   return (
-    <div className="bg-blue-200 p-3 flex justify-around">
+    <div className="bg-blue-200 p-3 flex justify-around mt-5">
       <div className="p-10 w-full">
         <div className="flex"> {/* Container principal: Logo | Links | Espaçador */}
 
