@@ -6,7 +6,7 @@ function Error404() {
     return (
         <div className="p-100">
             <h1 className="font-bold text-[30px]">
-                404 | Esta página "{pathname}" não foi encontrada
+                {`404 | Esta página "${pathname}" não foi encontrada`}
             </h1>
         </div>
     );

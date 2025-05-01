@@ -6,15 +6,14 @@ function Header() {
     // Container principal
     <div className="bg-blue-200 p-3 flex flex-col items-center gap-4 sm:flex-row sm:justify-between sm:items-center">
 
-      {/* Logo*/}
       <div>
-        <a href="/">
+        <Link href="/">
           <img
             src="/logo-no-background.svg"
             alt="Logo"
             className="h-8 w-auto fill-black"
           />
-        </a>
+        </Link>
       </div>
 
       {/* Links */}
