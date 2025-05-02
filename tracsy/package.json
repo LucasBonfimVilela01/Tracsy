@@ -6,7 +6,7 @@
     "json-server": "json-server --watch db.json --port 8080",
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "json-server --watch db.json --port 8080",
+    "start": "json-server --watch db.json --host 0.0.0.0 --port $PORT",
     "lint": "next lint"
   },
   "dependencies": {
