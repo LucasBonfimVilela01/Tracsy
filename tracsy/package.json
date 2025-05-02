@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "json-server": "json-server --watch db.json --port 5000",
+    "json-server": "json-server --watch db.json --port 8080",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
