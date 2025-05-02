@@ -65,12 +65,12 @@ export function CardFeed({
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <Button className="bg-blue-400 w-[80%] h-[50%] cursor-pointer hover:bg-blue-500">
-                Método de contato
+                Contatar
               </Button>
             </AlertDialogTrigger>
             <AlertDialogContent className="bg-blue-300">
               <AlertDialogHeader>
-                <AlertDialogTitle>Método de contato</AlertDialogTitle>
+                <AlertDialogTitle>Contatar</AlertDialogTitle>
                 <AlertDialogDescription className="text-black">
                   {contato}
                 </AlertDialogDescription>
