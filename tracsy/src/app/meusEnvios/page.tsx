@@ -13,6 +13,8 @@ interface Desaparecido {
   criadoEm: string;
   atualizadoEm: string;
   userId: string; // ID do usuário que cadastrou
+  contatoTelefone: string; // Telefone de contato
+  contatoEmail: string; // E-mail de contato
 }
 
 // Classe para gerenciar os dados dos desaparecidos
@@ -28,6 +30,8 @@ class DesaparecidoService {
       criadoEm: "2024-03-10T08:45:00Z",
       atualizadoEm: "2024-03-18T16:20:00Z",
       userId: "user1",
+      contatoTelefone: "(11) 4002-8922",
+      contatoEmail: "bieberfever@example.com",
     },
     {
       id: "1",
@@ -39,6 +43,8 @@ class DesaparecidoService {
       criadoEm: "2024-03-15T10:00:00Z",
       atualizadoEm: "2024-03-15T10:00:00Z",
       userId: "user1",
+      contatoTelefone: "(11) 4002-8922",
+      contatoEmail: "usuario@example.com",
     },
     {
       id: "2",
@@ -50,6 +56,8 @@ class DesaparecidoService {
       criadoEm: "2024-03-20T14:30:00Z",
       atualizadoEm: "2024-03-22T09:15:00Z",
       userId: "user1",
+      contatoTelefone: "(11) 4002-8922",
+      contatoEmail: "usuario@example.com",
     },
     {
       id: "4",
@@ -61,6 +69,8 @@ class DesaparecidoService {
       criadoEm: "2024-03-25T11:20:00Z",
       atualizadoEm: "2024-03-25T11:20:00Z",
       userId: "user1",
+      contatoTelefone: "(11) 4002-8922",
+      contatoEmail: "usuario@example.com",
     },
   ];
 
@@ -72,7 +82,7 @@ class DesaparecidoService {
 // Componente para exibir o status de avistamentos
 function DesaparecidoCard({ desaparecido }: { desaparecido: Desaparecido }) {
   return (
-    <div className="bg-white rounded-lg shadow-md">
+    <div className="bg-blue-100 rounded-lg shadow-lg">
       <div className="flex flex-col md:flex-row">
         <div className="w-full md:w-1/3">
           <div className="w-full h-64 overflow-hidden">
@@ -88,7 +98,7 @@ function DesaparecidoCard({ desaparecido }: { desaparecido: Desaparecido }) {
             <Button
               variant="ghost"
               size="icon"
-              className="hover:bg-gray-100 transition-colors duration-200"
+              className="hover:bg-blue-200 transition-colors duration-200"
             >
               <Pencil className="h-4 w-4" />
             </Button>
@@ -104,12 +114,20 @@ function DesaparecidoCard({ desaparecido }: { desaparecido: Desaparecido }) {
             <h3 className="font-medium text-xl mb-1 text-gray-900">{desaparecido.nome}</h3>
             <p className="text-gray-600 mb-2">Idade: {desaparecido.idade} anos</p>
           </div>
-          <div className="mb-0">
+          <div className="mb-4">
             <p className="text-gray-600 mb-1">
               <span className="font-medium text-gray-800">Última localização:</span> {desaparecido.ultimaLocalizacao}
             </p>
             <p className="text-gray-600">
               <span className="font-medium text-gray-800">Data do desaparecimento:</span> {desaparecido.dataDesaparecimento}
+            </p>
+          </div>
+          <div className="mb-0">
+            <p className="text-gray-600 mb-1">
+              <span className="font-medium text-gray-800">Telefone de contato:</span> {desaparecido.contatoTelefone}
+            </p>
+            <p className="text-gray-600">
+              <span className="font-medium text-gray-800">E-mail de contato:</span> {desaparecido.contatoEmail}
             </p>
           </div>
         </div>
