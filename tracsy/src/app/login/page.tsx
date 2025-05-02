@@ -19,7 +19,7 @@ function LoginPage() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/users?email=${formData.email}&senha=${formData.senha}`
+        `${process.env.NEXT_PUBLIC_API_URL}/users?email=${formData.email}&senha=${formData.senha}`
       );
       const users = await response.json();
 
