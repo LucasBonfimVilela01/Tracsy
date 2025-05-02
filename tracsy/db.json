@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "nome": "Usuário Teste",
+      "email": "teste@exemplo.com",
+      "senha": "ksdnfilasdhfoiaehfape2391jdq"
+    },
+    {
+      "id": 1746142911921,
+      "nome": "Usuario teste",
+      "email": "email@emaillegal",
+      "senha": "supermegalegalsenha999"
+    },
+    {
+      "id": 1746143854205,
+      "nome": "Novo usuario",
+      "email": "email@superteste",
+      "senha": "senhasupermegalegal123"
+    }
+  ]
+}
