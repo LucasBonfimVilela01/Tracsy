@@ -6,10 +6,11 @@ import { useRouter } from "next/navigation";
 import { PageTitle } from "@/components/ui/pageTitle";
 
 function PerfilPage() {
-  const [user, setUser] = useState<{ nome: string; email: string; senha: string } | null>(null);
+  const [user, setUser] = useState<{ id: string; nome: string; email: string; senha: string } | null>(null);
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [notLoggedInMessage, setNotLoggedInMessage] = useState("");
+  const [confirmDelete, setConfirmDelete] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -42,6 +43,33 @@ function PerfilPage() {
     setUser(null); // Limpa o estado do usuário
     setMessage("Você saiu da sua conta.");
     router.push("/"); // Redireciona para a página principal
+  };
+
+
+
+  const handleDeleteAccount = async () => {
+    if (confirmDelete && user) {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/users/${user.id}`, // Substitua "id" pelo campo correto do usuário
+          {
+            method: "DELETE",
+          }
+        );
+  
+        if (response.ok) {
+          Cookies.remove("loggedInUser"); // Remove o cookie
+          setUser(null); // Limpa o estado do usuário
+          setMessage("Sua conta foi deletada com sucesso.");
+          router.push("/"); // Redireciona para a página principal
+        } else {
+          setMessage("Erro ao deletar a conta. Tente novamente.");
+        }
+      } catch (error) {
+        console.error("Erro ao deletar a conta:", error);
+        setMessage("Erro ao deletar a conta. Tente novamente.");
+      }
+    }
   };
 
   if (!user) {
@@ -121,6 +149,35 @@ function PerfilPage() {
           className="p-2 w-full text-white rounded bg-red-400 cursor-pointer hover:bg-red-500"
         >
           Sair
+        </button>
+      </div>
+
+      {/* Deletar a conta */}
+      <div className="border p-3 rounded-xl text-center mt-4">
+        <h1 className="p-2 mb-2 font-bold text-red-500">Deletar Conta</h1>
+        <p className="mb-4 text-gray-600">
+          Marque a caixa abaixo para confirmar a exclusão da sua conta.
+        </p>
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <input
+            type="checkbox"
+            id="confirmDelete"
+            checked={confirmDelete}
+            onChange={(e) => setConfirmDelete(e.target.checked)}
+            className="w-5 h-5"
+          />
+          <label htmlFor="confirmDelete" className="text-gray-700">
+            Confirmo que desejo deletar minha conta
+          </label>
+        </div>
+        <button
+          type="button"
+          onClick={handleDeleteAccount}
+          disabled={!confirmDelete}
+          className={`p-2 w-full text-white rounded ${confirmDelete ? "bg-red-400 hover:bg-red-500" : "bg-gray-300 cursor-not-allowed"
+            }`}
+        >
+          Deletar Conta
         </button>
       </div>
     </div>
