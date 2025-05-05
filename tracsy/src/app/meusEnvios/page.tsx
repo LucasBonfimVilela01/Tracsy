@@ -73,7 +73,7 @@ function MeusEnviosPage() {
                       <img
                         src={desaparecido.fotoSrc}
                         alt={desaparecido.nome}
-                        className="w-full h-full object-cover transition-transform duration-300 rounded-tl-lg md:rounded-bl-lg"
+                        className="w-full h-full object-contain md:object-cover transition-transform duration-300 rounded-tl-lg md:rounded-bl-lg"
                       />
                     </div>
                   </div>
@@ -110,7 +110,7 @@ function MeusEnviosPage() {
                         <span className="font-medium text-gray-800">Descrição:</span> {desaparecido.descricao}
                       </p>
                       <p className="text-gray-600">
-                        <span className="font-medium text-gray-800">Data do Desaparecimento:</span>{" "}
+                        <span className="font-medi  um text-gray-800">Data do Desaparecimento:</span>{" "}
                         {new Date(desaparecido.dataDesaparecimento).toLocaleDateString()}
                       </p>
                     </div>
