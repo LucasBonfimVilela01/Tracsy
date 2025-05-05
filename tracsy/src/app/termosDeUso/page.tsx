@@ -12,8 +12,8 @@ function TermosDeUsoPage() {
                 </p>
 
                 <p className="mb-4">
-                    Bem-vindo(a) ao Tracsy! Estes Termos de Uso ("Termos") regem o acesso e uso da plataforma Tracsy
-                    ("nós", "nosso", "Tracsy") por parte dos usuários ("você", "usuário"), disponível por meio de nosso site www.tracsy.com.
+                    Bem-vindo(a) ao Tracsy! Estes Termos de Uso (&quot;Termos&quot;) regem o acesso e uso da plataforma Tracsy
+                    (&quot;nós&quot;, &quot;nosso&quot;, &quot;Tracsy&quot;) por parte dos usuários (&quot;você&quot;, &quot;usuário&quot;), disponível por meio de nosso site www.tracsy.com.
                 </p>
 
                 <p className="mb-4">
