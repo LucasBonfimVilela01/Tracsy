@@ -3,9 +3,9 @@ import { PageTitle } from "@/components/ui/pageTitle";
 
 function PerguntasFrequentesPage() {
     return (
-        <div className="w-[40%]">
+        <div className="sm:w-full md:w-[90%] lg:w-[80%] xl:w-[60%] 2xl:w-[50%] mx-auto ">
             <PageTitle title="Perguntas frequentes" />
-            <div className="w-full">
+            <div className="w-full p-10  ">
                 <AccordionDinamico
                     dados={[
                         { trigger: "Como cadastro um desaparecido?", content: "Você deve fazer login e clicar em cadastrar desaparecido no nosso header." },
