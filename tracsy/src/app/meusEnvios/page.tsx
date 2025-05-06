@@ -44,6 +44,7 @@ function MeusEnviosPage() {
           setActionFeedback("Erro ao carregar os desaparecidos.");
         }
       } catch (error) {
+        console.error("Erro ao conectar ao servidor:", error);
         setLoadingFeedback("");
         setActionFeedback("Erro ao conectar ao servidor.");
       }
@@ -68,6 +69,7 @@ function MeusEnviosPage() {
         setActionFeedback("Erro ao deletar o registro.");
       }
     } catch (error) {
+      console.error("Erro ao conectar ao servidor:", error);
       setLoadingFeedback("");
       setActionFeedback("Erro ao conectar ao servidor.");
     }
