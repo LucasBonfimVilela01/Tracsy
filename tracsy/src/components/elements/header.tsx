@@ -16,8 +16,8 @@ function Header() {
   }, []);
 
   return (
-    // Container principal
-    <div className="bg-blue-200 p-3 flex flex-col items-center gap-4 sm:flex-row sm:justify-between sm:items-center">
+    // Container principal do Header
+    <div className="sticky top-0 z-50 backdrop-blur-md bg-blue-200/70 p-3 flex flex-col items-center gap-4 sm:flex-row sm:justify-between sm:items-center shadow-md">
       <div>
         <Link href="/">
           <img
@@ -31,10 +31,14 @@ function Header() {
       {/* Links */}
       <div className="flex">
         <div className="flex flex-wrap justify-center items-center">
+          <Button asChild variant="link">
+            <Link href="/feed">Feed principal</Link>
+          </Button>
+
           {isLoggedIn ? (
             <>
               <Button asChild variant="link">
-                <Link href="/cadastrarDesaparecido">Cadastrar desaparecido</Link>
+                <Link href="/cadastrarDesaparecido">Reportar desaparecido</Link>
               </Button>
               <Button asChild variant="link">
                 <Link href="/meusEnvios">Meus envios</Link>
@@ -73,6 +77,7 @@ function Header() {
         </div>
       </div>
     </div>
+
   );
 }
 

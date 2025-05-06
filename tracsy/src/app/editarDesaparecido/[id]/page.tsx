@@ -39,6 +39,14 @@ function EditarDesaparecidoPage() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    // Extrai o src se for um iframe
+    if (name === "mapaScr") {
+      const srcMatch = value.match(/<iframe[^>]+src="([^"]+)"/);
+      const extractedSrc = srcMatch ? srcMatch[1] : value;
+      setFormData((prev) => ({ ...prev, [name]: extractedSrc }));
+      return;
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {

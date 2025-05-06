@@ -43,6 +43,14 @@ function CadastrarDesaparecidoPage() {
       return;
     }
 
+    // Extrai o src se for um iframe
+    if (name === "mapaScr") {
+      const srcMatch = value.match(/<iframe[^>]+src="([^"]+)"/);
+      const extractedSrc = srcMatch ? srcMatch[1] : value;
+      setFormData((prev) => ({ ...prev, [name]: extractedSrc }));
+      return;
+    }
+
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
