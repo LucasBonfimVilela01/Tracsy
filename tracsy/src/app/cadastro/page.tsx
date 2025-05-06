@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation"; // Importa o useRouter
+import Link from "next/link"; // Importa o Link para redirecionamento
 import Cookies from "js-cookie"; // Importa o js-cookie para manipular cookies
 import { PageTitle } from "@/components/ui/pageTitle";
 
@@ -9,6 +10,7 @@ function CadastroPage() {
   const [formData, setFormData] = useState({ nome: "", email: "", senha: "" });
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [acceptedTerms, setAcceptedTerms] = useState(false); // Estado para o checkbox
   const router = useRouter(); // Inicializa o useRouter
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +21,24 @@ function CadastroPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!acceptedTerms) {
+      setMessage("Você deve aceitar os termos de uso para continuar.");
+      return;
+    }
+
     try {
+      // Verifica se o e-mail já está cadastrado
+      const checkEmailResponse = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/users?email=${formData.email}`
+      );
+      const existingUsers = await checkEmailResponse.json();
+
+      if (existingUsers.length > 0) {
+        setMessage("Este e-mail já está cadastrado, tente outro.");
+        return;
+      }
+
+      // Prossegue com o cadastro se o e-mail não estiver cadastrado
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -85,6 +104,21 @@ function CadastroPage() {
               />
             </button>
           </div>
+          <div className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              id="acceptTerms"
+              checked={acceptedTerms}
+              onChange={(e) => setAcceptedTerms(e.target.checked)}
+              className="w-5 h-5"
+            />
+            <label htmlFor="acceptTerms" className="text-gray-700">
+              Eu li e aceito os{" "}
+              <Link href="/termosDeUso" className="text-blue-500 underline">
+                termos de uso
+              </Link>
+            </label>
+          </div>
           <button
             type="submit"
             className="p-2 text-white rounded bg-blue-400 cursor-pointer hover:bg-blue-500"
@@ -92,7 +126,7 @@ function CadastroPage() {
             Cadastrar
           </button>
         </form>
-        {message && <p className="mt-4 text-center">{message}</p>}
+        {message && <p className="mt-4 text-center text-red-500">{message}</p>}
       </div>
     </div>
   );
