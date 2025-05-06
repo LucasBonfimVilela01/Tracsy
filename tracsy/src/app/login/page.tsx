@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation"; // Importa o useRouter
 import Cookies from "js-cookie";
 import { PageTitle } from "@/components/ui/pageTitle";
 
@@ -8,6 +9,7 @@ function LoginPage() {
   const [formData, setFormData] = useState({ email: "", senha: "" });
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter(); // Inicializa o useRouter
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -26,6 +28,7 @@ function LoginPage() {
       if (users.length > 0) {
         Cookies.set("loggedInUser", JSON.stringify(users[0]), { expires: 7 });
         setMessage("Login realizado com sucesso!");
+        router.push("/perfil"); // Redireciona para a página de perfil
       } else {
         setMessage("Credenciais inválidas.");
       }

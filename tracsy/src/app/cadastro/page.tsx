@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation"; // Importa o useRouter
+import Cookies from "js-cookie"; // Importa o js-cookie para manipular cookies
 import { PageTitle } from "@/components/ui/pageTitle";
 
 function CadastroPage() {
   const [formData, setFormData] = useState({ nome: "", email: "", senha: "" });
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter(); // Inicializa o useRouter
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -24,8 +27,10 @@ function CadastroPage() {
       });
 
       if (response.ok) {
+        const newUser = await response.json(); // Obtém os dados do usuário cadastrado
+        Cookies.set("loggedInUser", JSON.stringify(newUser), { expires: 7 }); // Armazena os dados no cookie
         setMessage("Cadastro realizado com sucesso!");
-        setFormData({ nome: "", email: "", senha: "" });
+        router.push("/perfil"); // Redireciona para a página de perfil
       } else {
         setMessage("Erro ao cadastrar. Tente novamente.");
       }

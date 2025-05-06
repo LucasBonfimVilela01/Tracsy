@@ -61,6 +61,8 @@ export function CardFeed({
             <div className="flex justify-center mt-2 text-sm text-gray-600">
               <p>Desapareceu em: {format(new Date(dataDesaparecimento), "yyyy/MM/dd")}</p>
             </div>
+            {/* Separador */}
+            <div className="bg-blue-300 order-3 h-1 w-full"/>
             {/* Descrição */}
             <div className="flex flex-col overflow-auto">
               <h1 className="font-bold">Descrição:</h1>
@@ -76,7 +78,7 @@ export function CardFeed({
                 Contatar
               </Button>
             </AlertDialogTrigger>
-            <AlertDialogContent className="bg-blue-300">
+            <AlertDialogContent className="border-0 bg-blue-300">
               <AlertDialogHeader>
                 <AlertDialogTitle>Contatar</AlertDialogTitle>
                 <AlertDialogDescription className="text-black">
@@ -84,7 +86,7 @@ export function CardFeed({
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel className="bg-blue-400 cursor-pointer hover:bg-blue-500 text-white">
+                <AlertDialogCancel className="border-0 bg-blue-400 cursor-pointer hover:bg-blue-500 text-white">
                   Sair
                 </AlertDialogCancel>
               </AlertDialogFooter>

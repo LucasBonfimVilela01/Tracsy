@@ -21,7 +21,7 @@ function PerfilPage() {
       // Exibe mensagem após 5 segundos se o usuário não estiver logado
       const timeout = setTimeout(() => {
         setNotLoggedInMessage("Você não está logado.");
-      }, 5000);
+      }, 2000);
       return () => clearTimeout(timeout);
     }
   }, []);

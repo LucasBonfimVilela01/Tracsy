@@ -1,129 +1,130 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { PageTitle } from "@/components/ui/pageTitle";
-import { Button } from "@/components/ui/button";
-import { Pencil, Trash2 } from "lucide-react";
-import { differenceInYears } from "date-fns";
+import { CardEnvio } from "@/components/elements/cardEnvio";
 
 interface Desaparecido {
-  id: number; // ID do desaparecido
+  id: number;
   nome: string;
-  dataNasc: string; // Data de nascimento
+  dataNasc: string;
   descricao: string;
   dataDesaparecimento: string;
-  contato: string; // Contato do desaparecido
-  fotoSrc: string; // URL da foto
-  mapaScr: string; // URL do mapa
-  idUsuario: number; // ID do usuário que cadastrou
+  contato: string;
+  fotoSrc: string;
+  idUsuario: number;
 }
 
 function MeusEnviosPage() {
   const [desaparecidos, setDesaparecidos] = useState<Desaparecido[]>([]);
   const [userId, setUserId] = useState<number | null>(null);
+  const [loadingFeedback, setLoadingFeedback] = useState<string>("");
+  const [actionFeedback, setActionFeedback] = useState<string>("");
+  const router = useRouter();
 
   useEffect(() => {
-    // Obtém o ID do usuário logado
     const loggedInUser = Cookies.get("loggedInUser");
     if (loggedInUser) {
       const user = JSON.parse(loggedInUser);
       setUserId(user.id);
     }
 
-    // Busca os desaparecidos do servidor
     const fetchDesaparecidos = async () => {
       try {
+        setLoadingFeedback("Carregando dados...");
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/desaparecidos`);
         if (response.ok) {
           const data = await response.json();
           setDesaparecidos(data);
+          setLoadingFeedback("");
         } else {
-          console.error("Erro ao carregar os desaparecidos.");
+          setLoadingFeedback("");
+          setActionFeedback("Erro ao carregar os desaparecidos.");
         }
       } catch (error) {
-        console.error("Erro ao conectar ao servidor:", error);
+        setLoadingFeedback("");
+        setActionFeedback("Erro ao conectar ao servidor.");
       }
     };
 
     fetchDesaparecidos();
   }, []);
 
-  // Filtra os desaparecidos pelo ID do usuário logado
+  const handleDelete = async (id: number) => {
+    try {
+      setLoadingFeedback("Deletando registro...");
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/desaparecidos/${id}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        setDesaparecidos((prev) => prev.filter((desaparecido) => desaparecido.id !== id));
+        setLoadingFeedback("");
+        setActionFeedback("Registro deletado com sucesso.");
+      } else {
+        setLoadingFeedback("");
+        setActionFeedback("Erro ao deletar o registro.");
+      }
+    } catch (error) {
+      setLoadingFeedback("");
+      setActionFeedback("Erro ao conectar ao servidor.");
+    }
+  };
+
+  const handleEdit = (id: number) => {
+    router.push(`/editarDesaparecido/${id}`);
+  };
+
   const meusDesaparecidos = desaparecidos.filter((desaparecido) => desaparecido.idUsuario === userId);
 
   return (
     <div className="w-full p-6">
-      <div className="pb-[6em]">
+      <div className="pb-[2em]">
         <PageTitle title="Meus envios" />
       </div>
 
+      {loadingFeedback && (
+        <div>
+          <p className="text-center text-gray-500 text-2xl font-bold">{loadingFeedback}</p>
+        </div>
+      )}
+
+      {actionFeedback && (
+        <div className="mb-4 mx-auto bg-blue-100 rounded-lg p-4 relative w-full md:max-w-4xl">
+          <p className="text-black">{actionFeedback}</p>
+          <button
+            className="absolute top-2 right-2 text-red-700 hover:text-red-900 cursor-pointer"
+            onClick={() => setActionFeedback("")}
+          >
+            X
+          </button>
+        </div>
+      )}
+
       <div className="flex justify-center gap-12">
         <div className="flex-1 flex flex-col gap-15 w-full md:max-w-4xl">
-          {meusDesaparecidos.map((desaparecido) => {
-            // Calcula a idade com base na data de nascimento
-            const idade = differenceInYears(new Date(), new Date(desaparecido.dataNasc));
+          {meusDesaparecidos.length === 0 && !loadingFeedback && (
+            <div className="text-center text-gray-500 text-xl font-medium">
+              Você ainda não fez nenhum envio.
+            </div>
+          )}
 
-            return (
-              <div key={desaparecido.id} className="bg-blue-100 rounded-lg shadow-lg w-full md:w-full">
-                <div className="flex flex-col md:flex-row">
-                  {/* Foto */}
-                  <div className="w-full md:w-1/3">
-                    <div className="w-full h-64 overflow-hidden">
-                      <img
-                        src={desaparecido.fotoSrc}
-                        alt={desaparecido.nome}
-                        className="w-full h-full object-contain md:object-cover transition-transform duration-300 rounded-tl-lg md:rounded-bl-lg"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Informações */}
-                  <div className="w-full md:w-2/3 p-6 relative">
-                    <div className="static md:absolute top-4 right-4 flex gap-2">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="hover:bg-blue-200 transition-colors duration-200"
-                      >
-                        <Pencil className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="text-red-600 hover:bg-red-50 transition-colors duration-200"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </div>
-                    <div className="mb-4">
-                      <h3 className="font-medium text-xl mb-1 text-gray-900">
-                        {desaparecido.nome}, {idade}
-                      </h3>
-                      <p className="text-gray-600 mb-2">
-                        <span className="font-medium text-gray-800">Data de Nascimento:</span>{" "}
-                        {new Date(desaparecido.dataNasc).toLocaleDateString()}
-                      </p>
-                    </div>
-                    <div className="mb-4">
-                      <p className="break-words text-gray-600 mb-1">
-                        <span className="font-medium text-gray-800">Descrição:</span> {desaparecido.descricao}
-                      </p>
-                      <p className="text-gray-600">
-                        <span className="font-medi  um text-gray-800">Data do Desaparecimento:</span>{" "}
-                        {new Date(desaparecido.dataDesaparecimento).toLocaleDateString()}
-                      </p>
-                    </div>
-                    <div className="mb-0">
-                      <p className="text-gray-600 mb-1">
-                        <span className="font-medium text-gray-800">Contato:</span> {desaparecido.contato}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {meusDesaparecidos.map((desaparecido) => (
+            <CardEnvio
+              key={desaparecido.id}
+              id={desaparecido.id}
+              nome={desaparecido.nome}
+              dataNasc={desaparecido.dataNasc}
+              descricao={desaparecido.descricao}
+              dataDesaparecimento={desaparecido.dataDesaparecimento}
+              contato={desaparecido.contato}
+              fotoSrc={desaparecido.fotoSrc}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+            />
+          ))}
         </div>
       </div>
     </div>
