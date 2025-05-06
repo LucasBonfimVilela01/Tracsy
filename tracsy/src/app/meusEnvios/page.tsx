@@ -91,12 +91,6 @@ function MeusEnviosPage() {
         <PageTitle title="Meus envios" />
       </div>
 
-      {loadingFeedback && (
-        <div>
-          <p className="pb-[2em] text-center text-gray-500 text-2xl font-bold">{loadingFeedback}</p>
-        </div>
-      )}
-
       {actionFeedback && (
         <div className="mb-4 mx-auto bg-blue-100 rounded-lg p-4 relative w-full md:max-w-4xl">
           <p className="text-black">{actionFeedback}</p>
@@ -111,11 +105,7 @@ function MeusEnviosPage() {
 
       <div className="flex justify-center gap-12">
         <div className="flex-1 flex flex-col gap-15 w-full md:max-w-4xl">
-          {meusDesaparecidos.length === 0 && !loadingFeedback && (
-            <div className="text-center text-gray-500 text-xl font-medium">
-              Você ainda não fez nenhum envio.
-            </div>
-          )}
+          
 
           {loading
             ? Array.from({ length: 3 }).map((_, index) => <CardEnvioSkeleton key={index} />)
@@ -132,7 +122,12 @@ function MeusEnviosPage() {
                   onEdit={handleEdit}
                   onDelete={handleDelete}
                 />
-              ))}
+              ))} 
+            {meusDesaparecidos.length === 0 && !loadingFeedback && (
+            <div className="text-center text-gray-500 text-xl font-medium">
+              Você ainda não fez nenhum envio.
+            </div>
+          )}
         </div>
       </div>
     </div>
