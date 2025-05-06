@@ -95,7 +95,7 @@ function CadastroPage() {
             <button
               type="button"
               onClick={() => setShowPassword((prev) => !prev)}
-              className="w-[7%]"
+              className="w-[7%] cursor-pointer"
             >
               <img
                 src={showPassword ? "/mostrar.svg" : "/ocultar.svg"}
@@ -110,7 +110,7 @@ function CadastroPage() {
               id="acceptTerms"
               checked={acceptedTerms}
               onChange={(e) => setAcceptedTerms(e.target.checked)}
-              className="w-5 h-5"
+              className="w-5 h-5 cursor-pointer"
             />
             <label htmlFor="acceptTerms" className="text-gray-700">
               Eu li e aceito os{" "}

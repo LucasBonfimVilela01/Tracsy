@@ -120,7 +120,7 @@ function PerfilPage() {
             <button
               type="button"
               onClick={() => setShowPassword((prev) => !prev)}
-              className="w-[7%]"
+              className="w-[7%] cursor-pointer"
             >
               <img
                 src={showPassword ? "/mostrar.svg" : "/ocultar.svg"}
@@ -164,7 +164,7 @@ function PerfilPage() {
             id="confirmDelete"
             checked={confirmDelete}
             onChange={(e) => setConfirmDelete(e.target.checked)}
-            className="w-5 h-5"
+            className="w-5 h-5 cursor-pointer"
           />
           <label htmlFor="confirmDelete" className="text-gray-700">
             Confirmo que desejo deletar minha conta

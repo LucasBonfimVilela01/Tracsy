@@ -65,7 +65,7 @@ function LoginPage() {
             <button
               type="button"
               onClick={() => setShowPassword((prev) => !prev)}
-              className="w-[7%]"
+              className="w-[7%] cursor-pointer"
             >
               <img
                 src={showPassword ? "/mostrar.svg" : "/ocultar.svg"}
