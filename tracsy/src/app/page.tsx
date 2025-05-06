@@ -1,64 +1,26 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { CardFeed } from "@/components/elements/cardFeed";
-import { CardFeedSkeleton } from "@/components/elements/cardFeedSkeleton"; // Importa o skeleton
+import { GuiaHome } from "@/components/elements/guiaHome";
+import { Button } from "@/components/ui/button";
 import { PageTitle } from "@/components/ui/pageTitle";
+import Link from "next/link";
 
-interface Desaparecido {
-  id: number;
-  nome: string;
-  dataNasc: string;
-  descricao: string;
-  dataDesaparecimento: string;
-  contato: string;
-  fotoSrc: string;
-  mapaScr: string;
-}
-
-export default function Home() {
-  const [desaparecidos, setDesaparecidos] = useState<Desaparecido[]>([]);
-  const [loading, setLoading] = useState<boolean>(true); // Estado de carregamento
-
-  useEffect(() => {
-    const fetchDesaparecidos = async () => {
-      try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/desaparecidos`);
-        if (response.ok) {
-          const data = await response.json();
-          setDesaparecidos(data);
-        } else {
-          console.error("Erro ao carregar os desaparecidos.");
-        }
-      } catch (error) {
-        console.error("Erro ao conectar ao servidor:", error);
-      } finally {
-        setLoading(false); // Finaliza o carregamento
-      }
-    };
-
-    fetchDesaparecidos();
-  }, []);
-
+function homePage() {
   return (
-    <div className="2xl:w-[40%] lg:w-[55%] md:w-[72.5%] sm:w-[80%] flex flex-col items-center w-[100%] gap-5">
-      <PageTitle title="Feed" />
-
-      {/* Exibe skeletons enquanto carrega */}
-      {loading
-        ? Array.from({ length: 3 }).map((_, index) => <CardFeedSkeleton key={index} />)
-        : desaparecidos.map((desaparecido) => (
-            <CardFeed
-              key={desaparecido.id}
-              fotoSrc={desaparecido.fotoSrc}
-              nome={desaparecido.nome}
-              dataNasc={desaparecido.dataNasc}
-              descricao={desaparecido.descricao}
-              contato={desaparecido.contato}
-              mapaSrc={desaparecido.mapaScr}
-              dataDesaparecimento={desaparecido.dataDesaparecimento}
-            />
-          ))}
+    <div className="sm:w-full md:w-[80%] lg:w-[70%] xl:w-[50%] 2xl:w-[40%] mx-auto">
+      <PageTitle title="Home" />
+      <GuiaHome
+        title="Bem vindos a Tracsy!"
+        description="Conectando e reencontrando pessoas desde 2025. Nossa missão não é apenas ajudar as pessoas desaparecidas, mas sim, fazer isso do melhor jeito possível."
+        imgSrc="/logo-grayscale.svg"
+        title2=""
+        description2=""
+      />
+      <div className="w-full flex justify-center">
+        <Button asChild className="bg-blue-400 cursor-pointer hover:bg-blue-500">
+          <Link href="/perguntasFrequentes">Aprenda como usar</Link>
+        </Button>
+      </div>
     </div>
   );
 }
+
+export default homePage;

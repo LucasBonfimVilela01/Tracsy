@@ -29,6 +29,9 @@ function LoginPage() {
         Cookies.set("loggedInUser", JSON.stringify(users[0]), { expires: 7 });
         setMessage("Login realizado com sucesso!");
         router.push("/perfil"); // Redireciona para a página de perfil
+        setTimeout(() => {
+          window.location.reload();
+        }, 200);
       } else {
         setMessage("Credenciais inválidas.");
       }

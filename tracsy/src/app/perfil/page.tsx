@@ -43,6 +43,9 @@ function PerfilPage() {
     setUser(null); // Limpa o estado do usuário
     setMessage("Você saiu da sua conta.");
     router.push("/"); // Redireciona para a página principal
+    setTimeout(() => {
+      window.location.reload();
+    }, 200);// reloadpagPincipal
   };
 
 

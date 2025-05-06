@@ -1,7 +1,6 @@
 import { SocialLink } from "@/components/elements/socialLink";
 import { PageTitle } from "@/components/ui/pageTitle";
 
-
 function RedesSociaisPage() {
     return (
         <div className="lg:w-[40%] md:w-[60%] sm:w-[80%]">

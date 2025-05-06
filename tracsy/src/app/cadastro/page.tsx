@@ -56,6 +56,9 @@ function CadastroPage() {
     } catch (error) {
       console.error("Erro ao conectar ao servidor:", error);
       setMessage("Erro ao conectar ao servidor.");
+      setTimeout(() => {
+        window.location.reload();
+      }, 200);//reload perfil
     }
   };
 
