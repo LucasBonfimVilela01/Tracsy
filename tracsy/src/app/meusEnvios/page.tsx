@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { PageTitle } from "@/components/ui/pageTitle";
 import { CardEnvio } from "@/components/elements/cardEnvio";
+import { CardEnvioSkeleton } from "@/components/elements/cardEnvioSkeleton";
 
 interface Desaparecido {
   id: number;
@@ -22,6 +23,7 @@ function MeusEnviosPage() {
   const [userId, setUserId] = useState<number | null>(null);
   const [loadingFeedback, setLoadingFeedback] = useState<string>("");
   const [actionFeedback, setActionFeedback] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -47,6 +49,8 @@ function MeusEnviosPage() {
         console.error("Erro ao conectar ao servidor:", error);
         setLoadingFeedback("");
         setActionFeedback("Erro ao conectar ao servidor.");
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -89,7 +93,7 @@ function MeusEnviosPage() {
 
       {loadingFeedback && (
         <div>
-          <p className="text-center text-gray-500 text-2xl font-bold">{loadingFeedback}</p>
+          <p className="pb-[2em] text-center text-gray-500 text-2xl font-bold">{loadingFeedback}</p>
         </div>
       )}
 
@@ -113,20 +117,22 @@ function MeusEnviosPage() {
             </div>
           )}
 
-          {meusDesaparecidos.map((desaparecido) => (
-            <CardEnvio
-              key={desaparecido.id}
-              id={desaparecido.id}
-              nome={desaparecido.nome}
-              dataNasc={desaparecido.dataNasc}
-              descricao={desaparecido.descricao}
-              dataDesaparecimento={desaparecido.dataDesaparecimento}
-              contato={desaparecido.contato}
-              fotoSrc={desaparecido.fotoSrc}
-              onEdit={handleEdit}
-              onDelete={handleDelete}
-            />
-          ))}
+          {loading
+            ? Array.from({ length: 3 }).map((_, index) => <CardEnvioSkeleton key={index} />)
+            : meusDesaparecidos.map((desaparecido) => (
+                <CardEnvio
+                  key={desaparecido.id}
+                  id={desaparecido.id}
+                  nome={desaparecido.nome}
+                  dataNasc={desaparecido.dataNasc}
+                  descricao={desaparecido.descricao}
+                  dataDesaparecimento={desaparecido.dataDesaparecimento}
+                  contato={desaparecido.contato}
+                  fotoSrc={desaparecido.fotoSrc}
+                  onEdit={handleEdit}
+                  onDelete={handleDelete}
+                />
+              ))}
         </div>
       </div>
     </div>
