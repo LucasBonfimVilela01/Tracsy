@@ -6,7 +6,9 @@ import { PageTitle } from "@/components/ui/pageTitle";
 
 function EditarDesaparecidoPage() {
   const router = useRouter();
-  const { id } = useParams(); // Obtém o ID do desaparecido da URL
+  const params = useParams(); // Obtém os parâmetros da URL
+  const id = params?.id as string; // Garante que `id` é uma string
+
   const [formData, setFormData] = useState({
     nome: "",
     dataNasc: "",
@@ -18,6 +20,11 @@ function EditarDesaparecidoPage() {
   });
 
   useEffect(() => {
+    if (!id) {
+      console.error("ID não encontrado na URL.");
+      return;
+    }
+
     // Busca os dados do desaparecido para preencher o formulário
     const fetchDesaparecido = async () => {
       try {
