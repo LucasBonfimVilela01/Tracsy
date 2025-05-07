@@ -38,8 +38,19 @@ function CadastroPage() {
         return;
       }
 
-      // Gerar o token JWT
-      const token = jwt.sign({ email: formData.email }, "secreta-chave", { expiresIn: "7d" });
+      // Solicitar o token ao servidor
+      const tokenResponse = await fetch("/api/generateToken", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: formData.email }),
+      });
+
+      if (!tokenResponse.ok) {
+        setMessage("Erro ao gerar o token.");
+        return;
+      }
+
+      const { token } = await tokenResponse.json();
 
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`, {
         method: "POST",
@@ -51,6 +62,9 @@ function CadastroPage() {
         const newUser = await response.json();
         Cookies.set("loggedInUser", JSON.stringify(newUser), { expires: 7 });
         setMessage("Cadastro realizado com sucesso!");
+        setTimeout(() => {
+          window.location.reload();
+        }, 200);// Reload Página de perfil
         router.push("/perfil");
       } else {
         setMessage("Erro ao cadastrar. Tente novamente.");

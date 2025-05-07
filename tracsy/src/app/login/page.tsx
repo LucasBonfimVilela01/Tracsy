@@ -27,8 +27,19 @@ function LoginPage() {
       const users = await response.json();
 
       if (users.length > 0) {
-        // Gerar o token JWT
-        const token = jwt.sign({ email: formData.email }, "secreta-chave", { expiresIn: "7d" });
+        // Solicitar o token ao servidor
+        const tokenResponse = await fetch("/api/generateToken", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: formData.email }),
+        });
+
+        if (!tokenResponse.ok) {
+          setMessage("Erro ao gerar o token.");
+          return;
+        }
+
+        const { token } = await tokenResponse.json();
 
         // Atualizar o campo `token` no servidor
         await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/${users[0].id}`, {
@@ -40,6 +51,9 @@ function LoginPage() {
         // Salvar o token e os dados do usuário nos cookies
         Cookies.set("loggedInUser", JSON.stringify({ ...users[0], token }), { expires: 7 });
         setMessage("Login realizado com sucesso!");
+        setTimeout(() => {
+          window.location.reload();
+        }, 200);// Reload Página de perfil
         router.push("/perfil");
       } else {
         setMessage("Credenciais inválidas.");
