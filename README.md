@@ -6,3 +6,4 @@
 - Lucas Bonfim [@LucasBonfimVilela01](https://github.com/LucasBonfimVilela01)
 - Nino Sinelli [@nino-clmity](https://github.com/nino-clmity)
 - Beatriz Silva [@Beatriz02020](https://github.com/Beatriz02020)
+- Neluma Lopes [@nelum44](https://github.com/nelum44)
