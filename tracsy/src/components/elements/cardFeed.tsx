@@ -48,7 +48,7 @@ export function CardFeed({
               <img
                 src={fotoSrc}
                 alt={`Foto de ${nome}`}
-                className="sm:max-h-45 bg:transparent sm:max-w-60 sm:object-contain object-contain sm:w-fit sm:h-full"
+                className="sm:max-h-45 bg:transparent sm:max-w-60 sm:object-contain object-contain rounded-xl sm:w-fit sm:h-full"
               />
             </div>
             {/* Nome e Idade */}
