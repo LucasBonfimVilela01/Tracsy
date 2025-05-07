@@ -31,10 +31,32 @@ function PerfilPage() {
     setUser((prev) => (prev ? { ...prev, [name]: value } : null));
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (user) {
-      Cookies.set("loggedInUser", JSON.stringify(user), { expires: 7 });
-      setMessage("Dados atualizados com sucesso!");
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/users/${user.id}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+          }
+        );
+
+        if (response.ok) {
+          const updatedUser = await response.json();
+          Cookies.set("loggedInUser", JSON.stringify(updatedUser), { expires: 7 });
+          setUser(updatedUser);
+          setMessage("Dados atualizados com sucesso!");
+        } else {
+          setMessage("Erro ao atualizar os dados. Tente novamente.");
+        }
+      } catch (error) {
+        console.error("Erro ao atualizar os dados:", error);
+        setMessage("Erro ao conectar ao servidor.");
+      }
     }
   };
 
@@ -59,7 +81,7 @@ function PerfilPage() {
             method: "DELETE",
           }
         );
-  
+
         if (response.ok) {
           Cookies.remove("loggedInUser"); // Remove o cookie
           setUser(null); // Limpa o estado do usuário
