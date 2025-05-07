@@ -8,7 +8,10 @@ export default function handler(req, res) {
       return res.status(400).json({ error: "Email é obrigatório" });
     }
 
-    const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: "7d" });
+    // Chave secreta diretamente no código
+    const secretKey = "secreta-chave";
+
+    const token = jwt.sign({ email }, secretKey, { expiresIn: "7d" });
     return res.status(200).json({ token });
   }
 
