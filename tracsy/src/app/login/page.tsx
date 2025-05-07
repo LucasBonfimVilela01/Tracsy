@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation"; // Importa o useRouter
 import Cookies from "js-cookie";
-import jwt from "jsonwebtoken";
 import { PageTitle } from "@/components/ui/pageTitle";
 
 function LoginPage() {

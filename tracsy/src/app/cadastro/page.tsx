@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation"; // Importa o useRouter
 import Link from "next/link"; // Importa o Link para redirecionamento
 import Cookies from "js-cookie"; // Importa o js-cookie para manipular cookies
 import { PageTitle } from "@/components/ui/pageTitle";
-import jwt from "jsonwebtoken";
 
 function CadastroPage() {
   const [formData, setFormData] = useState({ nome: "", email: "", senha: "" });
