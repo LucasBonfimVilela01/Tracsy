@@ -64,9 +64,9 @@ function LoginPage() {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto rounded-md">
+    <div className="w-full max-w-md mx-auto rounded-md mt-8">
       <PageTitle title="Login" />
-      <div className="border p-3 rounded-xl">
+      <div className="border p-3 mb-8 rounded-xl">
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input
             type="email"

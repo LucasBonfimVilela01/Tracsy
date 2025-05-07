@@ -11,7 +11,7 @@ export function GuiaHome({ title, title2, description, description2, imgSrc }: C
         <div className="flex justify-center">
             <div className="w-full p-2 gap-2 flex flex-col">
                 <h1 className="font-bold text-xl text-center">{title}</h1>
-                <p className="font-light text-3 text-center">{description}</p>
+                <p className="font-normal text-3 text-center mb-3">{description}</p>
                 <div className="w-full flex justify-center">
                     <img className="w-[70%] rounded-2xl shadow-[0_25px_20px_-15px_rgba(0,0,0,0.3)]" src={imgSrc} />
                 </div>

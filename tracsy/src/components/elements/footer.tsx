@@ -36,10 +36,10 @@ function Footer() {
           <div className="hidden lg:block lg:w-[33%]" />
 
         </div>
-        <div className="pt-20">
+        <div className="pt-10">
           <div className="w-full h-[1px] bg-black" />
           <div className="text-center p-2">
-            <p className="text-[14px]">© {new Date().getFullYear()} Tracsy. Todos direitos reservados.</p>
+            <p className="text-[14px] mt-5">© {new Date().getFullYear()} Tracsy. Todos direitos reservados.</p>
           </div>
         </div>
       </div>
