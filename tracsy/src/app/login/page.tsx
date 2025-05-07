@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation"; // Importa o useRouter
 import Cookies from "js-cookie";
+import jwt from "jsonwebtoken";
 import { PageTitle } from "@/components/ui/pageTitle";
 
 function LoginPage() {
@@ -26,12 +27,20 @@ function LoginPage() {
       const users = await response.json();
 
       if (users.length > 0) {
-        Cookies.set("loggedInUser", JSON.stringify(users[0]), { expires: 7 });
+        // Gerar o token JWT
+        const token = jwt.sign({ email: formData.email }, "secreta-chave", { expiresIn: "7d" });
+
+        // Atualizar o campo `token` no servidor
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/${users[0].id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token }),
+        });
+
+        // Salvar o token e os dados do usuário nos cookies
+        Cookies.set("loggedInUser", JSON.stringify({ ...users[0], token }), { expires: 7 });
         setMessage("Login realizado com sucesso!");
-        router.push("/perfil"); // Redireciona para a página de perfil
-        setTimeout(() => {
-          window.location.reload();
-        }, 200);
+        router.push("/perfil");
       } else {
         setMessage("Credenciais inválidas.");
       }

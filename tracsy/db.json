@@ -4,43 +4,50 @@
       "id": 1,
       "nome": "Usuário Teste",
       "email": "teste@exemplo.com",
-      "senha": "ksdnfilasdhfoiaehfape2391jdq"
+      "senha": "ksdnfilasdhfoiaehfape2391jdq",
+      "token": ""
     },
     {
       "id": 1746142911921,
       "nome": "Usuario teste",
       "email": "email@emaillegal",
-      "senha": "supermegalegalsenha999"
+      "senha": "supermegalegalsenha999",
+      "token": ""
     },
     {
       "nome": "Candy Bolin",
       "email": "email@email",
       "senha": "123123123123123123123",
-      "id": 1746391123910
+      "id": 1746391123910,
+      "token": ""
     },
     {
       "nome": "Super conta",
       "email": "email@emaillegal123",
       "senha": "email@emaillegal123",
-      "id": 1746400119402
+      "id": 1746400119402,
+      "token": ""
     },
     {
       "nome": "Conta@email",
       "email": "Conta@email",
       "senha": "Conta@email",
-      "id": 1746504634072
+      "id": 1746504634072,
+      "token": ""
     },
     {
       "nome": "Pessoa Legal",
       "email": "emaillegal@emaillegal",
       "senha": "emaillegal@emaillegal",
-      "id": 1746504742850
+      "id": 1746504742850,
+      "token": ""
     },
     {
       "nome": "asdasdasd",
       "email": "emailquaselegal@email",
       "senha": "emailquaselegal@email",
-      "id": 1746504871609
+      "id": 1746504871609,
+      "token": ""
     }
   ],
   "desaparecidos": [

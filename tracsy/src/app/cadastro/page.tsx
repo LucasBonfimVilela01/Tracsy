@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"; // Importa o useRouter
 import Link from "next/link"; // Importa o Link para redirecionamento
 import Cookies from "js-cookie"; // Importa o js-cookie para manipular cookies
 import { PageTitle } from "@/components/ui/pageTitle";
+import jwt from "jsonwebtoken";
 
 function CadastroPage() {
   const [formData, setFormData] = useState({ nome: "", email: "", senha: "" });
@@ -27,7 +28,6 @@ function CadastroPage() {
     }
 
     try {
-      // Verifica se o e-mail já está cadastrado
       const checkEmailResponse = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/users?email=${formData.email}`
       );
@@ -38,27 +38,26 @@ function CadastroPage() {
         return;
       }
 
-      // Prossegue com o cadastro se o e-mail não estiver cadastrado
+      // Gerar o token JWT
+      const token = jwt.sign({ email: formData.email }, "secreta-chave", { expiresIn: "7d" });
+
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, id: Date.now() }),
+        body: JSON.stringify({ ...formData, id: Date.now(), token }),
       });
 
       if (response.ok) {
-        const newUser = await response.json(); // Obtém os dados do usuário cadastrado
-        Cookies.set("loggedInUser", JSON.stringify(newUser), { expires: 7 }); // Armazena os dados no cookie
+        const newUser = await response.json();
+        Cookies.set("loggedInUser", JSON.stringify(newUser), { expires: 7 });
         setMessage("Cadastro realizado com sucesso!");
-        router.push("/perfil"); // Redireciona para a página de perfil
+        router.push("/perfil");
       } else {
         setMessage("Erro ao cadastrar. Tente novamente.");
       }
     } catch (error) {
       console.error("Erro ao conectar ao servidor:", error);
       setMessage("Erro ao conectar ao servidor.");
-      setTimeout(() => {
-        window.location.reload();
-      }, 200);//reload perfil
     }
   };
 
