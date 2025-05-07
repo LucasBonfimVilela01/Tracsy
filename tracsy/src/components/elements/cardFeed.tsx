@@ -34,17 +34,17 @@ export function CardFeed({
   const idade = dataNasc ? differenceInYears(new Date(), new Date(dataNasc)) : "N/A";
 
   return (
-    <div className="w-full sm:h-125 h-[600px] flex sm:flex-row flex-col justify-center items-center bg-blue-200 rounded-xl">
+    <div className="w-full sm:h-125 h-[700px] flex sm:flex-row flex-col justify-center items-center bg-blue-200 rounded-xl">
       {/* Content */}
-      <div className="sm:w-[48%] w-full h-full">
+      <div className="sm:w-[48%] w-[70%] h-full sm:flex sm:flex-col sm:items-stretch sm:justify-center">
         {/* Content top */}
-        <div className="w-full h-[400px] p-3 flex flex-col">
+        <div className="w-full sm:p-3 p-6 flex flex-col">
           {/* Foto */}
-          <div className="w-full h-[40%] flex justify-center relative">
+          <div className="w-full h-[40%] max-h-[150px] flex justify-center relative">
             <img
               src={fotoSrc}
               alt={`Foto de ${nome}`}
-              className="rounded-xl object-contain w-fit h-full"
+              className="rounded-xl object-contain w-fit h-full max-h-[150px] "
             />
           </div>
 
@@ -71,10 +71,10 @@ export function CardFeed({
           </div>
         </div>
         {/* Actions */}
-        <div className="sm:h-[20%] flex justify-center items-center">
+        <div className="sm:h-[20%] sm:pb-0 pb-3 flex justify-center items-center">
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button className="bg-blue-400 w-[60%] h-[50%] cursor-pointer hover:bg-blue-500">
+              <Button className="bg-blue-400 w-[60%] sm:h-[50%] cursor-pointer hover:bg-blue-500">
                 Contatar
               </Button>
             </AlertDialogTrigger>
@@ -96,7 +96,7 @@ export function CardFeed({
       </div>
 
       {/* Mapa */}
-      <div className="sm:w-[52%] w-full sm:h-full rounded-xl justify-center items-center">
+      <div className="sm:w-[52%] w-full p-2 sm:h-full h-full rounded-xl justify-center items-center">
         <iframe
           src={mapaSrc}
           className="w-full sm:h-full h-full rounded-xl"

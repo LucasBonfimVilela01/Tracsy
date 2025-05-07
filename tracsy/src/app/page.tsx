@@ -8,7 +8,7 @@ function homePage() {
     <div className="sm:w-full md:w-[80%] lg:w-[70%] xl:w-[50%] 2xl:w-[40%] mx-auto">
       <PageTitle title="Home" />
       <GuiaHome
-        title="Seja bem vindo a Tracsy!"
+        title="Seja bem vindo à Tracsy!"
         description="Conectando e reencontrando pessoas desde 2025. Nossa missão não é apenas ajudar as pessoas desaparecidas, mas sim, fazer isso do melhor jeito possível."
         imgSrc="/logo-grayscale.svg"
         title2=""
