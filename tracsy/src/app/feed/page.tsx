@@ -41,7 +41,7 @@ export default function Feed() {
   }, []);
 
   return (
-    <div className="2xl:w-[40%] lg:w-[55%] md:w-[72.5%] sm:w-[80%] flex flex-col items-center w-[100%] gap-5">
+    <div className="2xl:w-[40%] lg:w-[55%] md:w-[72.5%] sm:w-[80%] flex flex-col items-center w-[95%] gap-5">
       <PageTitle title="Feed Desaparecidos" />
 
       {/* Exibe skeletons enquanto carrega */}

@@ -30,54 +30,51 @@ export function CardFeed({
   mapaSrc,
   dataDesaparecimento,
 }: CardFeedProps) {
-  // Calcula a idade com base na data de nascimentox 
+  // Calcula a idade com base na data de nascimento
   const idade = dataNasc ? differenceInYears(new Date(), new Date(dataNasc)) : "N/A";
 
   return (
-    <div className="sm:w-full w-full p-3 sm:h-125 h-180 flex flex-col sm:flex-row bg-blue-200 rounded-xl">
+    <div className="w-full sm:h-125 h-[600px] flex sm:flex-row flex-col justify-center items-center bg-blue-200 rounded-xl">
       {/* Content */}
-          {/* */}
-      <div className="w-full sm:h-[100%] sm:w-[48%] h-[50%]">
+      <div className="sm:w-[48%] w-full h-full">
         {/* Content top */}
-        <div className="w-full p-3 max-h-[85%] flex flex-row sm:flex-col">
-          {/* */}
-          {/* Left: foto + dados + data */}
-          <div className="flex flex-col sm:h-[80%] items-center w-1/3 sm:w-full">
-            {/* Foto */}
-            <div className="w-full h-[180px] flex justify-center relative">
-              <img
-                src={fotoSrc}
-                alt={`Foto de ${nome}`}
-                className="sm:max-h-45 bg:transparent sm:max-w-60 sm:object-contain object-contain rounded-xl sm:w-fit sm:h-full"
-              />
-            </div>
-            {/* Nome e Idade */}
-            <div className="flex justify-center p-2 font-bold">
-              <p className="text-md">{nome},&nbsp;{idade}</p>
+        <div className="w-full h-[400px] p-3 flex flex-col">
+          {/* Foto */}
+          <div className="w-full h-[40%] flex justify-center relative">
+            <img
+              src={fotoSrc}
+              alt={`Foto de ${nome}`}
+              className="rounded-xl object-contain w-fit h-full"
+            />
+          </div>
+
+          {/* Text */}
+          <div>
+            {/* Dados */}
+            <div className="flex justify-center p-2">
+              {/* Nome e Idade */}
+              <p className="text-md">
+                {nome},&nbsp;{idade}
+              </p>
             </div>
             {/* Data do Desaparecimento */}
             <div className="flex justify-center mt-2 text-sm text-gray-600">
               <p>Desapareceu em: {format(new Date(dataDesaparecimento), "yyyy/MM/dd")}</p>
             </div>
             {/* Separador */}
-          <div className="sm:bg-blue-300 sm:order-3 sm:mt-2 sm:mb-2 sm:h-1 sm:w-[95%] !sm:invisible" />
-          </div>
-          {/* Right: descrição */}
-          <div className="flex flex-row-reverse w-2/3 sm:w-full sm:h-[20%] overflow-hidden pl-2" 
-          >{/* Separador vertical */}
-            <div className="bg-blue-300 order-3 mt-1 mb-5 ml-2 mr-2 h-[100%] w-1 sm:invisible" />
-
-            <div className="flex flex-col w-full">
-                <h1 className="font-bold sm:text-md">Descrição:</h1>
-                <p className="break-words">{descricao}</p>
+            <div className="bg-blue-300 mt-3 mb-3 order-3 h-1 w-full"/>
+            {/* Descrição */}
+            <div className="flex flex-col overflow-auto font-light">
+              <h1 className="font-normal">Descrição:</h1>
+              <p className="break-words">{descricao}</p>
             </div>
+          </div>
         </div>
-      </div>
         {/* Actions */}
-        <div className="sm:h-[20%] sm:p-3 flex justify-center items-center">
+        <div className="sm:h-[20%] flex justify-center items-center">
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button className="bg-blue-400 w-[40%] sm:w-[60%] sm:h-[50%] cursor-pointer hover:bg-blue-500">
+              <Button className="bg-blue-400 w-[60%] h-[50%] cursor-pointer hover:bg-blue-500">
                 Contatar
               </Button>
             </AlertDialogTrigger>
@@ -99,14 +96,15 @@ export function CardFeed({
       </div>
 
       {/* Mapa */}
-      <div className="w-full h-[100%] sm:w-[52%] sm:h-full bg-blue-400 rounded-xl flex justify-center items-center">
+      <div className="sm:w-[52%] w-full sm:h-full rounded-xl justify-center items-center">
         <iframe
           src={mapaSrc}
-          className="w-full h-full rounded-xl"
+          className="w-full sm:h-full h-full rounded-xl"
           allowFullScreen
         />
       </div>
-    </div>
 
+
+    </div>
   );
 }
