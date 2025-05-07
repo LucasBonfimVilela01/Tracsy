@@ -17,7 +17,7 @@ function PerguntasFrequentesPage() {
         <AccordionItem value="item-1">
             <AccordionTrigger>O que é o Tracsy?</AccordionTrigger>
             <AccordionContent>
-              Não. Tracsy é uma plataforma para compartilhar pessoas desaparecidas.
+              Tracsy é uma plataforma para compartilhar informações sobre pessoas desaparecidas e sua última localização conhecida, focada em conectar pessoas e aumentar as chances de reencontro.
             </AccordionContent>
           </AccordionItem>
 
