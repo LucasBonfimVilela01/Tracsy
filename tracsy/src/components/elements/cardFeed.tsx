@@ -96,7 +96,7 @@ export function CardFeed({
       </div>
 
       {/* Mapa */}
-      <div className="sm:w-[52%] w-full p-2 sm:h-full h-full rounded-xl justify-center items-center">
+      <div className="sm:w-[52%] w-full p-2 h-full rounded-xl justify-center items-center">
         <iframe
           src={mapaSrc}
           className="w-full sm:h-full h-full rounded-xl"
