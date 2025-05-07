@@ -17,14 +17,47 @@ function PerguntasFrequentesPage() {
         <AccordionItem value="item-1">
             <AccordionTrigger>O que é o Tracsy?</AccordionTrigger>
             <AccordionContent>
-              Tracsy é uma plataforma para compartilhar informações sobre pessoas desaparecidas e sua última localização conhecida, focada em conectar pessoas e aumentar as chances de reencontro.
+            <div className="flex flex-col text-center m-4 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-5">
+            <p className="mb-2 font-semibold">Tracsy é uma plataforma digital dedicada a reunir informações sobre pessoas desaparecidas, com foco em:</p>
+                <p className="mb-4">Compartilhar dados essenciais (nome, foto, idade, descrição física, data do desaparecimento).</p>
+                <p className="mb-4">Informar a última localização conhecida da pessoa desaparecida.</p>
+                <p className="mb-4">Conectar familiares, amigos, voluntários e autoridades em torno de um objetivo comum: reencontrar pessoas desaparecidas.</p>
+                <p className="mb-4">De forma humanitária dá voz aos familiares, amigos,e todos que tem o objetivo de reencontro com as pessoas queridas.</p>
+          </div>  
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem value="item-2">
+            <AccordionTrigger>Por que o Tracsy é importante?</AccordionTrigger>
+            <AccordionContent>
+            <div className="flex flex-col text-center m-4 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-5">
+            <p className="mb-2 font-semibold">O Tracsy faz o melhor para:</p>
+                <p className="mb-4">Centraliza casos de desaparecimento em uma única plataforma acessível.</p>
+                <p className="mb-4">Transforma o público em uma rede de apoio ativa.</p>
+                <p className="mb-4">Dá visibilidade contínua aos casos, mesmo após o impacto inicial da notícia desaparecer.</p>
+                <p className="mb-4">Humaniza as buscas: cada perfil conta uma história e mobiliza empatia.</p>
+            </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="item-3">
+            <AccordionTrigger>Tracsy é uma rede social?</AccordionTrigger>
+            <AccordionContent>
+            <div className="flex flex-col text-center m-4 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-5">
+                <p className="mb-2 font-semibold">Embora envolva usuários compartilhando informações, Tracsy não possui os elementos tradicionais de redes sociais, como:</p>
+                <p className="mb-4">* Lista de amigos ou seguidores;</p>
+                <p className="mb-4">* Publicações pessoais ou de entretenimento;</p>
+                <p className="mb-4">* Curtidas, reações ou postagens de estilo livre.</p>
+                <br/>
+                <p className="mb-2 font-semibold">Seu foco exclusivo é a divulgação de pessoas desaparecidas, afim de auxiliar as buscas e toda a estrutura da plataforma é voltada a isso. Ou seja, Tracsy é uma ferramenta de utilidade pública, não uma rede para socialização.</p>
+            </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="item-5">
             <AccordionTrigger>Como cadastro um desaparecido?</AccordionTrigger>
             <AccordionContent>
-              <div className="flex flex-col text-center m-4 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+              <div className="flex flex-col text-center m-4 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-5">
                 <h1 className="my-2 font-semibold">Faça Login:</h1>
                 <p>Acesse o site e clique em &quot;Login&quot; na parte superior da página.</p>
                 <p>Digite seu e-mail e senha para fazer login na sua conta.</p>
@@ -60,10 +93,10 @@ function PerguntasFrequentesPage() {
             </AccordionContent>
           </AccordionItem>
 
-          <AccordionItem value="item-3">
+          <AccordionItem value="item-6">
             <AccordionTrigger>Como posso contatar sobre algum desaparecido?</AccordionTrigger>
             <AccordionContent>
-              <div className="flex flex-col text-center m-4 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+              <div className="flex flex-col text-center m-4 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-5">
                 <h1 className="my-2 font-semibold">Vá ao maps:</h1>
                 <p className="mb-4">No maps, selecione o local desejado.</p>
                 <p className="mb-4">Ao clicar com o botão direito, clique em &quot;compartilhar este local&quot;.</p>
@@ -90,13 +123,13 @@ function PerguntasFrequentesPage() {
             </AccordionContent>
           </AccordionItem>
 
-          <AccordionItem value="item-4">
+          <AccordionItem value="item-7">
             <AccordionTrigger>Como posso deletar algum cadastro que eu fiz?</AccordionTrigger>
             <AccordionContent>
-              <div className="flex flex-col text-center m-4 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+              <div className="flex flex-col text-center m-4 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-5">
                 <h1 className="mb-2 font-semibold">Vá para a página &quot;Meus Envios&quot;:</h1>
                 <p className="mb-4">Após o login, no header acesse &quot;Meus Envios&quot;.</p>
-                <p className="mb-4">Ao clicar no ícone de lixeira, o envio será automaticamente excluído.</p>
+                <p className="mb-4">Ao clicar no ícone de lixeira, o registro será automaticamente excluído.</p>
                 <br />
                 <div className="mx-auto">
                   <Image src="/meusenvios1.png" alt="Exemplo de delete" width={300} height={200} className="rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)]" />
@@ -111,13 +144,29 @@ function PerguntasFrequentesPage() {
             </AccordionContent>
           </AccordionItem>
 
-          <AccordionItem value="item-5">
-            <AccordionTrigger>Tracsy é uma rede social?</AccordionTrigger>
+          <AccordionItem value="item-8">
+            <AccordionTrigger>Como posso atualizar algum cadastro que eu fiz?</AccordionTrigger>
             <AccordionContent>
-              Não. Tracsy é uma plataforma para compartilhar pessoas desaparecidas.
+              <div className="flex flex-col text-center m-4 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-5">
+                <h1 className="mb-2 font-semibold">Vá para a página &quot;Meus Envios&quot;:</h1>
+                <p className="mb-4">Após o login, no header acesse &quot;Meus Envios&quot;.</p>
+                <div className="mx-auto">
+                  <Image src="/editarEnvio1.png" alt="Exemplo de editar 1" width={300} height={300} className="rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)]" />
+                </div>
+                <br /><br />
+                <p className="mb-4">Ao clicar no ícone de lápis, o registro será automaticamente editado.</p>
+                <div className="mx-auto">
+                  <Image src="/editarEnvio2.png" alt="Exemplo de delete" width={300} height={300} className="rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)]" />
+                </div>
+                <br /><br />
+                <p className="mb-4">Uma mensagem será mostrada quando o cadastro for atualizado.</p>
+                <div className="mx-auto">
+                  <Image src="/envioEditado.png" alt="Exemplo de envio 3" width={300} height={300} className="rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)]" />
+                </div>
+                <br/>
+              </div>
             </AccordionContent>
           </AccordionItem>
-
         </Accordion>
       </div>
     </div>
