@@ -7,7 +7,7 @@ import { handleTitle } from "@/lib/handleTitle";
 import Link from "next/link";
 import { useEffect } from "react";
 
-function homePage() {
+function HomePage() {
 
   useEffect(() => {
     //Define o título da página como o nome dela
@@ -33,4 +33,4 @@ function homePage() {
   );
 }
 
-export default homePage;
+export default HomePage;
