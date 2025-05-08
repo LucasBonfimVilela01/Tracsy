@@ -68,13 +68,19 @@ function EditarDesaparecidoPage() {
 
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Extrai o src se for um iframe no campo de mapa
-    if (name === "mapaScr") {
-      const srcMatch = value.match(/<iframe[^>]+src="([^"]+)"/);
-      const extractedSrc = srcMatch ? srcMatch[1] : value;
-      setFormData((prev) => ({ ...prev, [name]: extractedSrc }));
-      return;
-    }
+    // Extrai o src se for um iframe no campo de mapa e valida o link
+if (name === "mapaScr") {
+  const srcMatch = value.match(/<iframe[^>]+src="([^"]+)"/);
+  const extractedSrc = srcMatch ? srcMatch[1] : value;
+
+  // Verifica se o link começa com "https://www.google.com/maps/embed"
+  if (extractedSrc.startsWith("https://www.google.com/maps/embed")) {
+    setFormData((prev) => ({ ...prev, [name]: extractedSrc }));
+  } else {
+    setFormData((prev) => ({ ...prev, [name]: "" })); // Define como vazio se não for válido
+  }
+  return;
+}
   };
 
   // Lida com o envio do formulário para atualizar os dados
