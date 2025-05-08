@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 import { PageTitle } from "@/components/ui/pageTitle";
 import { CardEnvio } from "@/components/elements/cardEnvio";
 import { CardEnvioSkeleton } from "@/components/elements/cardEnvioSkeleton";
+import { handleTitle } from "@/lib/handleTitle";
 
 interface Desaparecido {
   id: number;
@@ -27,6 +28,9 @@ function MeusEnviosPage() {
   const router = useRouter();
 
   useEffect(() => {
+    //Define o título da página como o nome dela
+    handleTitle("Meus envios")
+    
     const loggedInUser = Cookies.get("loggedInUser");
     if (loggedInUser) {
       const user = JSON.parse(loggedInUser);

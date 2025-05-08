@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation"; // Importa o useRouter
 import Link from "next/link"; // Importa o Link para redirecionamento
 import Cookies from "js-cookie"; // Importa o js-cookie para manipular cookies
 import { PageTitle } from "@/components/ui/pageTitle";
+import { handleTitle } from "@/lib/handleTitle";
 
 function CadastroPage() {
   const [formData, setFormData] = useState({ nome: "", email: "", senha: "" });
@@ -12,6 +13,11 @@ function CadastroPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false); // Estado para o checkbox
   const router = useRouter(); // Inicializa o useRouter
+
+  useEffect(() => {
+    //Define o título da página como o nome dela
+    handleTitle("Cadastro")
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

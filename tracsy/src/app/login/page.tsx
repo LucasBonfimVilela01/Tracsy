@@ -1,15 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation"; // Importa o useRouter
 import Cookies from "js-cookie";
 import { PageTitle } from "@/components/ui/pageTitle";
+import { handleTitle } from "@/lib/handleTitle";
 
 function LoginPage() {
   const [formData, setFormData] = useState({ email: "", senha: "" });
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter(); // Inicializa o useRouter
+
+  useEffect(() => {
+    //Define o título da página como o nome dela
+    handleTitle("Login")
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

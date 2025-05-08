@@ -1,9 +1,19 @@
+"use client";
+
 import { GuiaHome } from "@/components/elements/guiaHome";
 import { Button } from "@/components/ui/button";
 import { PageTitle } from "@/components/ui/pageTitle";
+import { handleTitle } from "@/lib/handleTitle";
 import Link from "next/link";
+import { useEffect } from "react";
 
 function homePage() {
+
+  useEffect(() => {
+    //Define o título da página como o nome dela
+    handleTitle("Home")
+  }, []);
+
   return (
     <div className="sm:w-full md:w-[80%] lg:w-[70%] xl:w-[50%] 2xl:w-[40%] mx-auto">
       <PageTitle title="Home" />

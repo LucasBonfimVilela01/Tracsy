@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { PageTitle } from "@/components/ui/pageTitle";
+import { handleTitle } from "@/lib/handleTitle";
 
 function EditarDesaparecidoPage() {
   const router = useRouter();
@@ -20,6 +21,9 @@ function EditarDesaparecidoPage() {
   });
 
   useEffect(() => {
+    //Define o título da página como o nome dela
+    handleTitle("Editar registro")
+    
     if (!id) {
       console.error("ID não encontrado na URL.");
       return;

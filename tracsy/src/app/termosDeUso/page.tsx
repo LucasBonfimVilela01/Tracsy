@@ -1,6 +1,16 @@
+"use client";
+
 import { PageTitle } from "@/components/ui/pageTitle";
+import { handleTitle } from "@/lib/handleTitle";
+import { useEffect } from "react";
 
 function TermosDeUsoPage() {
+
+    useEffect(() => {
+    //Define o título da página como o nome dela
+    handleTitle("Termos de uso")
+    }, []);
+
     return (
         <div className="flex flex-col w-full max-w-5xl mx-auto px-6">
             <PageTitle title="Termos de uso" />

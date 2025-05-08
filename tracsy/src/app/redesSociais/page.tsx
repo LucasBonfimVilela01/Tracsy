@@ -1,7 +1,17 @@
+"use client";
+
 import { SocialLink } from "@/components/elements/socialLink";
 import { PageTitle } from "@/components/ui/pageTitle";
+import { handleTitle } from "@/lib/handleTitle";
+import { useEffect } from "react";
 
 function RedesSociaisPage() {
+
+    useEffect(() => {
+    //Define o título da página como o nome dela
+    handleTitle("Redes sociais")
+    }, []);
+
     return (
         <div className="lg:w-[40%] md:w-[60%] sm:w-[80%]">
             <PageTitle title="Redes sociais"/>

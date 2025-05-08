@@ -1,3 +1,5 @@
+"use client";
+
 import { PageTitle } from "@/components/ui/pageTitle";
 import {
   Accordion,
@@ -6,8 +8,16 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Image from "next/image";
+import { handleTitle } from "@/lib/handleTitle";
+import { useEffect } from "react";
 
 function PerguntasFrequentesPage() {
+
+  useEffect(() => {
+    //Define o título da página como o nome dela
+    handleTitle("FAC")
+  }, []);
+  
   return (
     <div className="sm:w-full md:w-[90%] lg:w-[80%] xl:w-[60%] 2xl:w-[50%] mx-auto ">
       <PageTitle title="Perguntas frequentes" />

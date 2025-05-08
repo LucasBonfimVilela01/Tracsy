@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { CardFeed } from "@/components/elements/cardFeed";
 import { CardFeedSkeleton } from "@/components/elements/cardFeedSkeleton"; // Importa o skeleton
 import { PageTitle } from "@/components/ui/pageTitle";
+import { handleTitle } from "@/lib/handleTitle";
 
 interface Desaparecido {
   id: number;
@@ -21,6 +22,9 @@ export default function Feed() {
   const [loading, setLoading] = useState<boolean>(true); // Estado de carregamento
 
   useEffect(() => {
+    //Define o título da página como o nome dela
+    handleTitle("Feed")
+
     const fetchDesaparecidos = async () => {
       try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/desaparecidos`);

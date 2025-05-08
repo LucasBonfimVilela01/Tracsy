@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie"; // Importar o js-cookie para acessar o cookie do usuário
 import { PageTitle } from "@/components/ui/pageTitle";
+import { handleTitle } from "@/lib/handleTitle";
 
 function CadastrarDesaparecidoPage() {
   const [formData, setFormData] = useState({
@@ -19,6 +20,9 @@ function CadastrarDesaparecidoPage() {
   const [idUsuario, setIdUsuario] = useState<number | null>(null); // Estado para armazenar o ID do usuário logado
 
   useEffect(() => {
+    //Define o título da página como o nome dela
+    handleTitle("Reportar desaparecido")
+
     const loggedInUser = Cookies.get("loggedInUser");
     if (loggedInUser) {
       const user = JSON.parse(loggedInUser);

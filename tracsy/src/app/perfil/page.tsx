@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { PageTitle } from "@/components/ui/pageTitle";
+import { handleTitle } from "@/lib/handleTitle";
 
 function PerfilPage() {
   const [user, setUser] = useState<{ id: string; nome: string; email: string; senha: string } | null>(null);
@@ -14,6 +15,9 @@ function PerfilPage() {
   const router = useRouter();
 
   useEffect(() => {
+    //Define o título da página como o nome dela
+    handleTitle("Perfil")
+    
     const loggedInUser = Cookies.get("loggedInUser");
     if (loggedInUser) {
       setUser(JSON.parse(loggedInUser));
