@@ -1,7 +1,9 @@
+//Importa as dependências necessárias
 import { Button } from "@/components/ui/button";
 import { Pencil, Trash2 } from "lucide-react";
 import { differenceInYears } from "date-fns";
 
+//Define as propriedas que a função vai receber.
 interface CardEnvioProps {
   id: number;
   nome: string;
@@ -10,8 +12,8 @@ interface CardEnvioProps {
   dataDesaparecimento: string;
   contato: string;
   fotoSrc: string;
-  onEdit: (id: number) => void;
-  onDelete: (id: number) => void;
+  onEdit: (id: number) => void; // Recebe um id a editar
+  onDelete: (id: number) => void; // Recebe um id a deletar 
 }
 
 export function CardEnvio({
@@ -25,6 +27,7 @@ export function CardEnvio({
   onEdit,
   onDelete,
 }: CardEnvioProps) {
+  // Calcula a idade com base na data de nascimento
   const idade = differenceInYears(new Date(), new Date(dataNasc));
 
   return (
@@ -43,12 +46,14 @@ export function CardEnvio({
 
         {/* Informações */}
         <div className="w-full md:w-2/3 p-6 relative">
+          {/* Botões */}
           <div className="static md:absolute top-4 right-4 flex gap-2">
             {/* Botão de editar */}
             <Button
               variant="ghost"
               size="icon"
               className="hover:bg-blue-200 transition-colors duration-200"
+              //Envia o id do card para edição
               onClick={() => onEdit(id)}
             >
               <Pencil className="h-4 w-4" />
@@ -58,11 +63,13 @@ export function CardEnvio({
               variant="ghost"
               size="icon"
               className="text-red-600 hover:bg-red-50 transition-colors duration-200"
+              //Envia o id do card para deleção
               onClick={() => onDelete(id)}
             >
               <Trash2 className="h-4 w-4" />
             </Button>
           </div>
+          {/* Informações pessoais */}
           <div className="mb-4">
             <h3 className="font-medium text-xl mb-1 text-gray-900">
               {nome}, {idade}
@@ -72,6 +79,7 @@ export function CardEnvio({
               {new Date(dataNasc).toLocaleDateString()}
             </p>
           </div>
+          {/* Informações do desaparecimento*/}
           <div className="mb-4">
             <p className="break-words text-gray-600 mb-1">
               <span className="font-medium text-gray-800">Descrição:</span> {descricao}
@@ -81,6 +89,7 @@ export function CardEnvio({
               {new Date(dataDesaparecimento).toLocaleDateString()}
             </p>
           </div>
+          {/* Informações de contato*/}
           <div className="mb-0">
             <p className="text-gray-600 mb-1">
               <span className="font-medium text-gray-800">Contato:</span> {contato}

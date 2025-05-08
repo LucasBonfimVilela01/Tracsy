@@ -1,38 +1,47 @@
+// Define que o código deve ser rodado do lado do cliente
 "use client";
 
+// Importa as dependências necessárias
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation"; // Importa o useRouter
-import Link from "next/link"; // Importa o Link para redirecionamento
-import Cookies from "js-cookie"; // Importa o js-cookie para manipular cookies
+import { useRouter } from "next/navigation"; 
+import Link from "next/link"; 
+import Cookies from "js-cookie"; 
 import { PageTitle } from "@/components/ui/pageTitle";
 import { handleTitle } from "@/lib/handleTitle";
 
 function CadastroPage() {
+  // Define os estados para armazenar os dados do formulário, mensagens de feedback, controle de exibição da senha e aceitação dos termos
   const [formData, setFormData] = useState({ nome: "", email: "", senha: "" });
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [acceptedTerms, setAcceptedTerms] = useState(false); // Estado para o checkbox
-  const router = useRouter(); // Inicializa o useRouter
+  const [acceptedTerms, setAcceptedTerms] = useState(false); // Estado para o checkbox de aceitação dos termos
 
+  // Instancia o roteador para navegação
+  const router = useRouter();
+
+  // Define o título da página ao carregar
   useEffect(() => {
-    //Define o título da página como o nome dela
-    handleTitle("Cadastro")
+    handleTitle("Cadastro");
   }, []);
 
+  // Atualiza os dados do formulário ao alterar os campos
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Lida com o envio do formulário de cadastro
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Verifica se os termos de uso foram aceitos
     if (!acceptedTerms) {
       setMessage("Você deve aceitar os termos de uso para continuar.");
       return;
     }
 
     try {
+      // Verifica se o e-mail já está cadastrado
       const checkEmailResponse = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/users?email=${formData.email}`
       );
@@ -43,7 +52,7 @@ function CadastroPage() {
         return;
       }
 
-      // Solicitar o token ao servidor
+      // Solicita o token ao servidor
       const tokenResponse = await fetch("/api/generateToken", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -57,6 +66,7 @@ function CadastroPage() {
 
       const { token } = await tokenResponse.json();
 
+      // Envia os dados do novo usuário para o servidor
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -65,11 +75,13 @@ function CadastroPage() {
 
       if (response.ok) {
         const newUser = await response.json();
-        Cookies.set("loggedInUser", JSON.stringify(newUser), { expires: 7 });
+        Cookies.set("loggedInUser", JSON.stringify(newUser), { expires: 7 }); // Salva os dados do usuário nos cookies
         setMessage("Cadastro realizado com sucesso!");
+
+        // Redireciona para a página de perfil após o cadastro
         setTimeout(() => {
           window.location.reload();
-        }, 200);// Reload Página de perfil
+        }, 200);
         router.push("/perfil");
       } else {
         setMessage("Erro ao cadastrar. Tente novamente.");
@@ -81,10 +93,15 @@ function CadastroPage() {
   };
 
   return (
+    // Container principal da página
     <div className="w-full max-w-md mx-auto rounded-md mt-8">
+      {/* Exibe o título da página */}
       <PageTitle title="Cadastro" />
+
+      {/* Formulário de cadastro */}
       <div className="border p-3 mb-8 rounded-xl">
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          {/* Campo para o nome */}
           <input
             type="text"
             name="nome"
@@ -94,6 +111,8 @@ function CadastroPage() {
             className="p-2 border rounded"
             required
           />
+
+          {/* Campo para o email */}
           <input
             type="email"
             name="email"
@@ -103,6 +122,8 @@ function CadastroPage() {
             className="p-2 border rounded"
             required
           />
+
+          {/* Campo para a senha com opção de exibir/ocultar */}
           <div className="relative flex justify-between">
             <input
               type={showPassword ? "text" : "password"}
@@ -125,6 +146,8 @@ function CadastroPage() {
               />
             </button>
           </div>
+
+          {/* Checkbox para aceitar os termos de uso */}
           <div className="flex items-center gap-2">
             <input
               type="checkbox"
@@ -140,6 +163,8 @@ function CadastroPage() {
               </Link>
             </label>
           </div>
+
+          {/* Botão para enviar o formulário */}
           <button
             type="submit"
             className="p-2 text-white rounded bg-blue-400 cursor-pointer hover:bg-blue-500"
@@ -147,10 +172,13 @@ function CadastroPage() {
             Cadastrar
           </button>
         </form>
+
+        {/* Exibe mensagens de feedback */}
         {message && <p className="mt-4 text-center text-red-500">{message}</p>}
       </div>
     </div>
   );
 }
 
+// Exporta a página CadastroPage
 export default CadastroPage;

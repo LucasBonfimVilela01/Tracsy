@@ -36,9 +36,11 @@ function Footer() {
           <div className="hidden lg:block lg:w-[33%]" />
 
         </div>
+        {/*Fundo do footer*/}
         <div className="pt-10">
           <div className="w-full h-[1px] bg-black" />
           <div className="text-center p-2">
+            {/*Pega o ano atual para escrever o texto de direitos autorais*/}
             <p className="text-[14px] mt-5">© {new Date().getFullYear()} Tracsy. Todos direitos reservados.</p>
           </div>
         </div>
@@ -47,4 +49,5 @@ function Footer() {
   );
 }
 
+//Exporta o elemento footer
 export { Footer };

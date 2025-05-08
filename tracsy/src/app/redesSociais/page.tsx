@@ -1,5 +1,7 @@
+//Define que o código deve ser rodado do lado do cliente
 "use client";
 
+//Importa as dependências necessárias
 import { SocialLink } from "@/components/elements/socialLink";
 import { PageTitle } from "@/components/ui/pageTitle";
 import { handleTitle } from "@/lib/handleTitle";
@@ -7,14 +9,20 @@ import { useEffect } from "react";
 
 function RedesSociaisPage() {
 
+    //Usa o "useEffect" para pegar dados externos ou afetar o back do lado do cliente
     useEffect(() => {
-    //Define o título da página como o nome dela
-    handleTitle("Redes sociais")
+        //Define o título da página como o nome dela
+        handleTitle("Redes sociais")
     }, []);
 
     return (
+        /*Define a responsividade para aumentar gradualmente o tamanho do container do conteúdo.*/
         <div className="lg:w-[40%] md:w-[60%] sm:w-[80%]">
-            <PageTitle title="Redes sociais"/>
+
+            {/*Usa o component page title e passa o nome da página.*/}
+            <PageTitle title="Redes sociais" />
+
+            {/*Usa o elemento de social link e passa as informações necessárias*/}
             <SocialLink
                 href="https://www.instagram.com/"
                 gradient="bg-gradient-to-r from-blue-800 via-purple-500 to-pink-500"
@@ -22,7 +30,7 @@ function RedesSociaisPage() {
                 title="Nosso instagram"
                 description="Fique sabendo das nossas atualizações!"
             />
-
+            {/*Usa o elemento de social link e passa as informações necessárias*/}
             <SocialLink
                 href="https://www.youtube.com/"
                 gradient="bg-gradient-to-r from-red-700 to-red-500"
@@ -30,7 +38,7 @@ function RedesSociaisPage() {
                 title="Nosso Youtube"
                 description="Vídeos sobre a plataforma!"
             />
-
+            {/*Usa o elemento de social link e passa as informações necessárias*/}
             <SocialLink
                 href="https://www.facebook.com/"
                 gradient="bg-gradient-to-r from-blue-700 to-blue-500"
@@ -38,7 +46,7 @@ function RedesSociaisPage() {
                 title="Nosso Facebook"
                 description="Saiba mais sobre nós!"
             />
-
+            {/*Usa o elemento de social link e passa as informações necessárias*/}
             <SocialLink
                 href="https://www.whatsapp.com/"
                 gradient="bg-gradient-to-r from-green-700 to-green-600"
@@ -50,4 +58,5 @@ function RedesSociaisPage() {
     );
 }
 
+//Exporta a página RedesSociaisPage
 export default RedesSociaisPage;
