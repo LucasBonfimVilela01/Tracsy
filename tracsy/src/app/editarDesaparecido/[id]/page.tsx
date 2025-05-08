@@ -49,8 +49,14 @@ function EditarDesaparecidoPage() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
 
+    // Limita a descrição a 105 caracteres
+    if (name === "descricao" && value.length > 105) {
+      return;
+    }
+
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    
     // Extrai o src se for um iframe
     if (name === "mapaScr") {
       const srcMatch = value.match(/<iframe[^>]+src="([^"]+)"/);
@@ -105,7 +111,7 @@ function EditarDesaparecidoPage() {
           />
           <textarea
             name="descricao"
-            placeholder="Descrição"
+            placeholder="Descrição (máximo 105 caracteres)"
             value={formData.descricao}
             onChange={handleChange}
             className="p-2 border rounded"

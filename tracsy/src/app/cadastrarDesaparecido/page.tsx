@@ -33,8 +33,8 @@ function CadastrarDesaparecidoPage() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
 
-    // Limita a descrição a 70 caracteres
-    if (name === "descricao" && value.length > 70) {
+    // Limita a descrição a 105 caracteres
+    if (name === "descricao" && value.length > 105) {
       return;
     }
 
@@ -125,7 +125,7 @@ function CadastrarDesaparecidoPage() {
           </div>
           <textarea
             name="descricao"
-            placeholder="Descrição (máximo 70 caracteres)"
+            placeholder="Descrição (máximo 105 caracteres)"
             value={formData.descricao}
             onChange={handleChange}
             className="p-2 border rounded"

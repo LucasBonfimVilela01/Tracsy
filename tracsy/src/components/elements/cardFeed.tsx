@@ -38,7 +38,7 @@ export function CardFeed({
       {/* Content */}
       <div className="sm:w-[48%] w-full h-full sm:flex sm:flex-col sm:items-stretch sm:justify-center">
         {/* Content top */}
-        <div className="w-full sm:p-3 p-6 flex flex-col">
+        <div className="w-full sm:p-3 p-6 flex flex-col sm:h-[80%]">
           {/* Foto */}
           <div className="w-full h-[40%] max-h-[150px] flex justify-center relative">
             <img
